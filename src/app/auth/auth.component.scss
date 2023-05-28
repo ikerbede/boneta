@@ -1,0 +1,18 @@
+$componentId: 'auth';
+
+:host {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: var(--boneta-color-primary);
+}
+
+.#{$componentId} {
+  &-appname {
+    color: var(--boneta-color-accent);
+  }
+}

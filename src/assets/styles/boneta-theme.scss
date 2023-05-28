@@ -1,0 +1,116 @@
+@use "@angular/material" as mat;
+@use 'variables/colors' as colors;
+
+@include mat.core();
+
+$yellow-palette: (
+ 50: colors.$boneta-color-yellow-50,
+ 100: colors.$boneta-color-yellow-100,
+ 200: colors.$boneta-color-yellow-200,
+ 300: colors.$boneta-color-yellow-300,
+ 400: colors.$boneta-color-yellow-400,
+ 500: colors.$boneta-color-yellow-500,
+ 600: colors.$boneta-color-yellow-600,
+ 700: colors.$boneta-color-yellow-700,
+ 800: colors.$boneta-color-yellow-800,
+ 900: colors.$boneta-color-yellow-900,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: black,
+   400: black,
+   500: black,
+   600: black,
+   700: black,
+   800: black,
+   900: black,
+ )
+);
+
+$blue-palette: (
+  50: colors.$boneta-color-blue-50,
+  100: colors.$boneta-color-blue-100,
+  200: colors.$boneta-color-blue-200,
+  300: colors.$boneta-color-blue-300,
+  400: colors.$boneta-color-blue-400,
+  500: colors.$boneta-color-blue-500,
+  600: colors.$boneta-color-blue-600,
+  700: colors.$boneta-color-blue-700,
+  800: colors.$boneta-color-blue-800,
+  900: colors.$boneta-color-blue-900,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
+$pink-palette: (
+  50: colors.$boneta-color-pink-50,
+  100: colors.$boneta-color-pink-100,
+  200: colors.$boneta-color-pink-200,
+  300: colors.$boneta-color-pink-300,
+  400: colors.$boneta-color-pink-400,
+  500: colors.$boneta-color-pink-500,
+  600: colors.$boneta-color-pink-600,
+  700: colors.$boneta-color-pink-700,
+  800: colors.$boneta-color-pink-800,
+  900: colors.$boneta-color-pink-900,
+ contrast: (
+  50: rgba(black, 0.87),
+  100: rgba(black, 0.87),
+  200: rgba(black, 0.87),
+  300: black,
+  400: black,
+  500: black,
+  600: black,
+  700: black,
+  800: black,
+  900: black,
+ )
+);
+
+$boneta-typography: mat.define-typography-config(
+  $font-family: 'Rubik'
+);
+
+$boneta-theme-yellow-primary: mat.define-palette($yellow-palette, 600);
+$boneta-theme-yellow-accent: mat.define-palette($blue-palette, 500);
+$boneta-theme-yellow-warn: mat.define-palette($pink-palette, 500);
+
+$boneta-theme-yellow: mat.define-light-theme((
+  color: (
+    primary: $boneta-theme-yellow-primary,
+    accent: $boneta-theme-yellow-accent,
+    warn: $boneta-theme-yellow-warn,
+  ),
+  typography: $boneta-typography,
+  density: 0,
+));
+
+@include mat.toolbar-typography($boneta-typography);
+@include mat.all-component-themes($boneta-theme-yellow);
+
+.blue-theme {
+  $boneta-theme-blue-primary: mat.define-palette($blue-palette, 500);
+  $boneta-theme-blue-accent: mat.define-palette($yellow-palette, 600);
+  $boneta-theme-blue-warn: mat.define-palette($pink-palette, 500);
+
+  $boneta-theme-blue: mat.define-dark-theme((
+    color: (
+      primary: $boneta-theme-blue-primary,
+      accent: $boneta-theme-blue-accent,
+      warn: $boneta-theme-blue-warn,
+    )
+  ));
+
+  @include mat.all-component-colors($boneta-theme-blue);
+}

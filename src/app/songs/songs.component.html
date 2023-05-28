@@ -1,0 +1,6 @@
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let song of songs" (click)="selectSong(song.id)">
+    <span matListItemTitle>{{ song.title }}</span>
+    <span matListItemLine>{{ song.author || 'Unknown' }}</span>
+  </mat-list-option>
+</mat-selection-list>

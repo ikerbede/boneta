@@ -1,0 +1,11 @@
+<h1 class="auth-appname">BONETA</h1>
+<bnt-login
+  *ngIf="!isSignupDisplayed"
+  (authenticate)="login($event)"
+  (signup)="isSignupDisplayed = true"
+></bnt-login>
+<bnt-signup
+  *ngIf="isSignupDisplayed"
+  (authenticate)="signup($event)"
+  (login)="isSignupDisplayed = false"
+></bnt-signup>

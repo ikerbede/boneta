@@ -1,0 +1,17 @@
+<bnt-toolbar (search)="filterSongs($event)"></bnt-toolbar>
+<div class="main-content">
+  <bnt-songs
+    [songs]="(songs$ | async) || []"
+    (songSelected)="displaySongDetails($event)"
+  ></bnt-songs>
+</div>
+<button class="main-add" type="button" mat-fab (click)="addSong()">
+  <mat-icon svgIcon="add"></mat-icon>
+</button>
+<ib-bottom-nav
+  backgroundColor="#ffde03"
+  color="#0335ff"
+  [items]="tabs"
+  [selectedIndex]="selectedTabIndex"
+  (indexSelected)="activateTab($event)"
+></ib-bottom-nav>

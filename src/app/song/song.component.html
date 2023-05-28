@@ -1,0 +1,18 @@
+<ng-container *ngIf="song$ | async as song">
+  <mat-toolbar color="accent">
+    <button type="button" mat-icon-button (click)="goBack()">
+      <mat-icon svgIcon="arrow_back"></mat-icon>
+    </button>
+    <span>{{ song.title }}</span>
+  </mat-toolbar>
+  <div class="song-content">{{ song.lyrics ?? '' }}</div>
+  <button
+    class="song-edit"
+    type="button"
+    mat-fab
+    color="primary"
+    (click)="editSong()"
+  >
+    <mat-icon svgIcon="edit"></mat-icon>
+  </button>
+</ng-container>

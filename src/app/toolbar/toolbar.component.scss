@@ -1,0 +1,13 @@
+$componentId: 'toolbar';
+
+.#{$componentId} {
+  &-main {
+    display: flex;
+    justify-content: space-between;
+    color: var(--boneta-color-accent);
+  }
+
+  &-search {
+    width: 100%;
+  }
+}

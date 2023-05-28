@@ -1,0 +1,11 @@
+$componentId: 'signup';
+
+.#{$componentId} {
+  display: flex;
+  flex-direction: column;
+
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,27 @@
+<mat-toolbar class="toolbar-main" color="primary" *ngIf="!isSearchBarDisplayed">
+  <span class="toolbar-title">Boneta</span>
+  <div class="toolbar-actions">
+    <button mat-icon-button (click)="isSearchBarDisplayed = true">
+      <mat-icon svgIcon="search"></mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-form-field
+  class="toolbar-search"
+  appearance="fill"
+  subscriptSizing="dynamic"
+  *ngIf="isSearchBarDisplayed"
+>
+  <button matPrefix mat-icon-button (click)="isSearchBarDisplayed = false">
+    <mat-icon svgIcon="arrow_back"></mat-icon>
+  </button>
+  <input
+    type="text"
+    matInput
+    placeholder="Search"
+    [formControl]="searchInput"
+  />
+  <button matSuffix mat-icon-button (click)="searchInput.reset()">
+    <mat-icon svgIcon="close"></mat-icon>
+  </button>
+</mat-form-field>

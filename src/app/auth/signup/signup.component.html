@@ -1,0 +1,23 @@
+<form class="signup" [formGroup]="credentials" (submit)="submit()">
+  <mat-form-field color="accent">
+    <mat-label for="username">User name:</mat-label>
+    <input type="text" name="username" formControlName="username" matInput />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label for="email">Email:</mat-label>
+    <input type="email" name="email" formControlName="email" matInput />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label for="password">Password:</mat-label>
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      matInput
+    />
+  </mat-form-field>
+  <div class="signup-actions">
+    <button type="submit" mat-raised-button color="accent">SIGN UP</button>
+    <button type="button" mat-raised-button (click)="onlogin()">LOG IN</button>
+  </div>
+</form>

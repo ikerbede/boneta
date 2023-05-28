@@ -1,0 +1,21 @@
+$componentId: 'main';
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.#{$componentId} {
+  &-content {
+    height: 100%;
+  }
+
+  &-add {
+    position: absolute;
+    bottom: 80px;
+    right: 24px;
+    z-index: 5;
+  }
+}

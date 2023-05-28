@@ -1,0 +1,21 @@
+<form class="login" [formGroup]="credentials" (submit)="submit()">
+  <mat-form-field color="accent">
+    <mat-label for="username">User name</mat-label>
+    <input type="text" name="username" formControlName="username" matInput />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label for="password">Password</mat-label>
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      matInput
+    />
+  </mat-form-field>
+  <div class="login-actions">
+    <button type="submit" mat-raised-button color="accent">LOG IN</button>
+    <button type="button" mat-raised-button (click)="onSignup()">
+      SIGN UP
+    </button>
+  </div>
+</form>

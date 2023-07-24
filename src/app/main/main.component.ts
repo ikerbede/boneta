@@ -12,7 +12,7 @@ import { SongsActions } from '../shared/states/songs/songs.actions';
 import {
   selectSongsByName,
   selectSongsSortedByAdditionDate,
-  selectSongsSortedByNbListenings,
+  selectSongsSortedByNbViews,
 } from '../shared/states/songs/songs.selectors';
 import { SongsComponent } from '../songs/songs.component';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
     if (index === 1) {
       this.songs$ = this.store.select(selectSongsSortedByAdditionDate);
     } else if (index === 2) {
-      this.songs$ = this.store.select(selectSongsSortedByNbListenings);
+      this.songs$ = this.store.select(selectSongsSortedByNbViews);
     } else if (index === 3) {
       this.songs$ = of([]); // TODO
     }
@@ -62,6 +62,7 @@ export class MainComponent implements OnInit {
   }
 
   displaySongDetails(songId: number): void {
+    this.store.dispatch(SongsActions.viewSong({ songId }));
     this.router.navigate([BonetaRoutes.Songs, songId]);
   }
 

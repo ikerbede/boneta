@@ -67,4 +67,16 @@ export class SongsEffects {
       )
     )
   );
+
+  viewSong$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SongsActions.viewSong),
+      mergeMap((action) =>
+        this.songsService.viewSong(action.songId).pipe(
+          map(() => SongsActions.viewSongSuccess({ songId: action.songId })),
+          catchError(() => of({ type: '[Songs] View Song Error' }))
+        )
+      )
+    )
+  );
 }

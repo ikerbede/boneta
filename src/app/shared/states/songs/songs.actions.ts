@@ -8,6 +8,8 @@ export const SongsActions = createActionGroup({
     'Load All Success': props<{ songs: readonly Song[] }>(),
     'Add Song': props<{ song: Partial<Song> }>(),
     'Add Song Success': props<{ song: Song }>(),
+    'View Song': props<{ songId: number }>(),
+    'View Song Success': props<{ songId: number }>(),
     'Edit Song': props<{ song: Partial<Song> }>(),
     'Edit Song Success': props<{ song: Song }>(),
     'Remove Song': props<{ songId: number }>(),

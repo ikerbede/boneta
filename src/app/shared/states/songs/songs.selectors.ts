@@ -14,10 +14,9 @@ export const selectSongsSortedByAdditionDate = createSelector(
     [...songs].sort((a, b) => (a.additionDate > b.additionDate ? -1 : 1))
 );
 
-export const selectSongsSortedByNbListenings = createSelector(
+export const selectSongsSortedByNbViews = createSelector(
   songsFeature.selectSongsState,
-  (songs) =>
-    [...songs].sort((a, b) => (a.nbListenings > b.nbListenings ? -1 : 1))
+  (songs) => [...songs].sort((a, b) => (a.nbViews > b.nbViews ? -1 : 1))
 );
 
 export const selectSong = (songId: number) =>

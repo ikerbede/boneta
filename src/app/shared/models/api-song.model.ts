@@ -1,8 +1,8 @@
-export interface Song {
+export interface ApiSong {
   id: number;
   title: string;
   additionDate: Date;
-  nbViews: number;
+  nb_views: number;
   author?: string;
   lyrics?: string;
 }

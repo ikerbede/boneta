@@ -11,7 +11,7 @@
 <ib-bottom-nav
   backgroundColor="#ffde03"
   color="#0335ff"
-  [items]="tabs"
+  [items]="(tabs$ | async) ?? []"
   [selectedIndex]="selectedTabIndex"
   (indexSelected)="activateTab($event)"
 ></ib-bottom-nav>

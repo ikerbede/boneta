@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { BottomNavComponent } from '@ikerbede/shared';
+import { BottomNavComponent, BottomNavItem } from '@ikerbede/shared';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { BonetaRoutes } from '../shared/enums/boneta-routes.enum';
 import { Song } from '../shared/models/song.model';
+import { FavoriteSongsActions } from '../shared/states/favorite-songs/favorite-songs.actions';
+import { selectFavoriteSongsSortedByNbViews } from '../shared/states/favorite-songs/favorite-songs.selectors';
 import { SongsActions } from '../shared/states/songs/songs.actions';
 import {
   selectSongsByName,
@@ -33,7 +35,7 @@ import { MAIN_TABS } from './main.constant';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  tabs = MAIN_TABS;
+  tabs$!: Observable<BottomNavItem[]>;
   selectedTabIndex = 0;
 
   songs$: Observable<readonly Song[]> = of([]);
@@ -42,7 +44,15 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(SongsActions.loadAll());
-    this.activateTab(this.tabs[0].index);
+    this.store.dispatch(FavoriteSongsActions.loadAll());
+    this.tabs$ = this.store.select(selectFavoriteSongsSortedByNbViews).pipe(
+      map((favoriteSongs) => {
+        const tabs = [...MAIN_TABS];
+        tabs[2].disabled = favoriteSongs.length === 0;
+        return tabs;
+      })
+    );
+    this.activateTab(1);
   }
 
   activateTab(index: number): void {
@@ -51,7 +61,7 @@ export class MainComponent implements OnInit {
     } else if (index === 2) {
       this.songs$ = this.store.select(selectSongsSortedByNbViews);
     } else if (index === 3) {
-      this.songs$ = of([]); // TODO
+      this.songs$ = this.store.select(selectFavoriteSongsSortedByNbViews);
     }
     this.selectedTabIndex = index;
   }

@@ -10,13 +10,19 @@ import { songGuard } from './shared/guards/song.guard';
 import { SongsEffects } from './shared/states/songs/songs.effects';
 import { songsFeature } from './shared/states/songs/songs.reducer';
 import { SongComponent } from './song/song.component';
+import { FavoriteSongsEffects } from './shared/states/favorite-songs/favorite-songs.effects';
+import { favoriteSongsFeature } from './shared/states/favorite-songs/favorite-songs.reducer';
 
 export const BONETA_ROUTES: Routes = [
   { path: BonetaRoutes.Authenticate, component: AuthComponent },
   {
     path: BonetaRoutes.Songs,
     component: MainComponent,
-    providers: [provideState(songsFeature), provideEffects(SongsEffects)],
+    providers: [
+      provideState(songsFeature),
+      provideState(favoriteSongsFeature),
+      provideEffects(SongsEffects, FavoriteSongsEffects),
+    ],
   },
   {
     path: `${BonetaRoutes.Songs}/${BonetaRoutes.New}`,
